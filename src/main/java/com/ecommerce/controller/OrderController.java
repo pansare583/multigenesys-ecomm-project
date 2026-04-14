@@ -41,9 +41,10 @@ public class OrderController {
                 .orElseThrow(() -> new RuntimeException("Order not found or unauthorized"));
 
         PaymentIntent intent = paymentService.createPaymentIntent(order.getTotalAmount());
-        
+
         // Note: In production, implement webhook handling for payment confirmation
-        // Order status should only be updated to PAID after successful payment confirmation
+        // Order status should only be updated to PAID after successful payment
+        // confirmation
         // For demo purposes, status remains as CREATED until payment is confirmed
 
         Map<String, String> response = new HashMap<>();
